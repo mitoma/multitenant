@@ -1,0 +1,15 @@
+class CreateOwnerDatabases < ActiveRecord::Migration
+  def self.up
+    create_table :owner_databases do |t|
+      t.string :name
+      t.string :host
+      t.integer :port
+
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :owner_databases
+  end
+end

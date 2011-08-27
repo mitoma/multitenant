@@ -1,0 +1,2 @@
+module Owner::DatabasesHelper
+end

@@ -1,0 +1,29 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: multitenant_development
+  pool: 5
+  username: multitenant
+  password:
+  host: localhost
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: multitenant_test
+  pool: 5
+  username: multitenant
+  password:
+  host: localhost
+  port: 5432
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: multitenant_production
+  pool: 5
+  username: multitenant
+  password:
+  host: localhost
+  port: 5432

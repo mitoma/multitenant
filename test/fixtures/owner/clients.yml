@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  database_id: 1
+  client: MyText
+  domain: MyText
+  status: MyText
+
+two:
+  database_id: 1
+  client: MyText
+  domain: MyText
+  status: MyText

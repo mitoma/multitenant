@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @owner_database.name %>
+</p>
+
+<p>
+  <b>Host:</b>
+  <%= @owner_database.hostname %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%= @owner_database.port %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%= @owner_database.username %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%= @owner_database.password %>
+</p>
+
+
+<%= link_to 'Edit', edit_owner_database_path(@owner_database) %> |
+<%= link_to 'Back', owner_databases_path %>

@@ -1,0 +1,33 @@
+<%= form_for(@owner_client) do |f| %>
+  <% if @owner_client.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@owner_client.errors.count, "error") %> prohibited this owner_client from being saved:</h2>
+
+      <ul>
+      <% @owner_client.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :database_id %><br />
+    <%= f.text_field :database_id %>
+  </div>
+  <div class="field">
+    <%= f.label :client %><br />
+    <%= f.text_area :client %>
+  </div>
+  <div class="field">
+    <%= f.label :domain %><br />
+    <%= f.text_area :domain %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.text_area :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
