@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :database_id %><br />
-    <%= f.text_field :database_id %>
+    <%= f.select :database_id, Owner::Database.all.map{|db| [db.name, db.id]} %>
   </div>
   <div class="field">
     <%= f.label :name %><br />
