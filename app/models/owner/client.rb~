@@ -1,2 +1,0 @@
-class Owner::Client < ActiveRecord::Base
-end
