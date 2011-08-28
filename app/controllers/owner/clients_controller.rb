@@ -80,4 +80,47 @@ class Owner::ClientsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def create_database
+    @owner_client = Owner::Client.find(params[:id])
+
+    respond_to do |format|
+      if @owner_client.create_database
+        format.html { redirect_to(owner_clients_url, :notice => 'Client Database was successfully created.') }
+        format.xml  { head :ok }
+      else
+        format.html { redirect_to(owner_clients_url, :notice => 'Client Database was already created.') }
+        format.xml  { render :xml => @owner_client.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def migrate_database
+    @owner_client = Owner::Client.find(params[:id])
+
+    respond_to do |format|
+      if @owner_client.migrate_database
+        format.html { redirect_to(owner_clients_url, :notice => 'Client Database was successfully migrated.') }
+        format.xml  { head :ok }
+      else
+        format.html { redirect_to(owner_clients_url, :notice => 'Client Database was already migrated.') }
+        format.xml  { render :xml => @owner_client.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def drop_database
+    @owner_client = Owner::Client.find(params[:id])
+
+    respond_to do |format|
+      if @owner_client.drop_database
+        format.html { redirect_to(owner_clients_url, :notice => 'Client Database was successfully dropped.') }
+        format.xml  { head :ok }
+      else
+        format.html { redirect_to(owner_clients_url, :notice => 'Client Database was already dropped.') }
+        format.xml  { render :xml => @owner_client.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
 end

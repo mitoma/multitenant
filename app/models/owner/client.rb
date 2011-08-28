@@ -18,6 +18,13 @@ class Owner::Client < ActiveRecord::Base
     save
   end
 
+  def migrate_database
+    return unless %w(migrated).include? status
+    database.migrate_database database_name
+    self.status = 'migrated'
+    save
+  end
+
   def drop_database
     return unless %w(created migrated).include? status
     database.drop_database database_name
