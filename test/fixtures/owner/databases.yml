@@ -2,10 +2,10 @@
 
 one:
   name: MyString
-  host: MyString
+  hostname: MyString
   port: 1
 
 two:
   name: MyString
-  host: MyString
+  hostname: MyString
   port: 1

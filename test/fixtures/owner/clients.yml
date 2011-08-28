@@ -2,12 +2,12 @@
 
 one:
   database_id: 1
-  client: MyText
+  name: MyText
   domain: MyText
   status: MyText
 
 two:
   database_id: 1
-  client: MyText
+  name: MyText
   domain: MyText
   status: MyText
