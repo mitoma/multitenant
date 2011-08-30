@@ -12,7 +12,6 @@ class Owner::Client < ActiveRecord::Base
 
   def create_database
     return if %w(created migrated).include? status
-    logger.debug database_name
     database.create_database database_name
     self.status = 'created'
     save
