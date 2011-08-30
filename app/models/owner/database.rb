@@ -18,7 +18,7 @@ class Owner::Database < ActiveRecord::Base
 
   def migrate_database(database_name, target_version = nil)
     proc_database do
-      ActiveRecord::Migrator.migrate("#{RAILS_ROOT}/db/client_migrate/*", target_version)
+      ActiveRecord::Migrator.migrate("db/client_migrate", target_version)
     end
   end
 

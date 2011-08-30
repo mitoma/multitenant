@@ -7,7 +7,7 @@ class Owner::Client < ActiveRecord::Base
 
   def initialize(*args)
     super *args
-    self.status = 'blank'
+    self.status = 'initial'
   end
 
   def create_database
@@ -19,14 +19,14 @@ class Owner::Client < ActiveRecord::Base
   end
 
   def migrate_database
-    return unless %w(migrated).include? status
+    return if %w(deleted initial).include? status
     database.migrate_database database_name
     self.status = 'migrated'
     save
   end
 
   def drop_database
-    return unless %w(created migrated).include? status
+    return if %w(initial dropped).include? status
     database.drop_database database_name
     self.status = 'dropped'
     save
