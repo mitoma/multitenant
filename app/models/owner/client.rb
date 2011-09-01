@@ -11,21 +11,21 @@ class Owner::Client < ActiveRecord::Base
   end
 
   def create_database
-    return if %w(created migrated).include? status
+    return unless %w(initial dropped).include? status
     database.create_database database_name
     self.status = 'created'
     save
   end
 
   def migrate_database
-    return if %w(deleted initial).include? status
+    return unless %w(created migrated).include? status
     database.migrate_database database_name
     self.status = 'migrated'
     save
   end
 
   def drop_database
-    return if %w(initial dropped).include? status
+    return unless %w(created migrated).include? status
     database.drop_database database_name
     self.status = 'dropped'
     save
@@ -34,5 +34,4 @@ class Owner::Client < ActiveRecord::Base
   def database_name
     "#{self.connection.current_database}_#{domain}"
   end
-
 end

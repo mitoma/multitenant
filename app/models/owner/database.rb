@@ -17,15 +17,15 @@ class Owner::Database < ActiveRecord::Base
   end
 
   def migrate_database(database_name, target_version = nil)
-    proc_database do
+    proc_database(database_name) do
       ActiveRecord::Migrator.migrate("db/client_migrate", target_version)
     end
   end
 
-  def proc_database(&block)
+  def proc_database(database_name = 'template1', &block)
     ActiveRecord::Base.establish_connection({:adapter => 'postgresql',
                                               :encoding => 'unicode',
-                                              :database => 'template1',
+                                              :database => database_name,
                                               :hostname => hostname,
                                               :port => port,
                                               :username => username,
