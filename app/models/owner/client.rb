@@ -11,21 +11,21 @@ class Owner::Client < ActiveRecord::Base
   end
 
   def create_database
-    return unless %w(initial dropped).include? status
+    return unless %w(initial dropped).include? self.status
     database.create_database database_name
     self.status = 'created'
     save
   end
 
   def migrate_database
-    return unless %w(created migrated).include? status
+    return unless %w(created migrated).include? self.status
     database.migrate_database database_name
     self.status = 'migrated'
     save
   end
 
   def drop_database
-    return unless %w(created migrated).include? status
+    return unless %w(created migrated).include? self.status
     database.drop_database database_name
     self.status = 'dropped'
     save
