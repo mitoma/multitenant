@@ -3,8 +3,8 @@
 one:
   database_id: 1
   name: MyText
-  domain: MyText
-  status: MyText
+  domain: domain
+  status: initial
 
 two:
   database_id: 1
