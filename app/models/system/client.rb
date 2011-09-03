@@ -34,4 +34,18 @@ class System::Client < ActiveRecord::Base
   def database_name
     "#{self.connection.current_database}_#{domain}"
   end
+
+  def proc_client(&block)
+    System::ClientBase.establish_connection({:adapter => 'postgresql',
+                                              :encoding => 'unicode',
+                                              :database => database_name,
+                                              :hostname => hostname,
+                                              :port => port,
+                                              :username => username,
+                                              :password => password
+                                            })
+    yield
+  ensure
+    System::ClientBase.establish_connection
+  end
 end
