@@ -1,5 +1,5 @@
 Multitenant::Application.routes.draw do
-  namespace :owner do
+  namespace :system do
     resources :clients do
       member do
         post :create_database

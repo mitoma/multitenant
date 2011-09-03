@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20110827094847) do
 
-  create_table "owner_clients", :force => true do |t|
+  create_table "system_clients", :force => true do |t|
     t.integer  "database_id"
     t.text     "name"
     t.text     "domain"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(:version => 20110827094847) do
     t.datetime "updated_at"
   end
 
-  create_table "owner_databases", :force => true do |t|
+  create_table "system_databases", :force => true do |t|
     t.text     "name"
     t.text     "hostname"
     t.integer  "port"

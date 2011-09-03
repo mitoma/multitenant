@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Database:</b>
+  <%= @system_client.database_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @system_client.name %>
+</p>
+
+<p>
+  <b>Domain:</b>
+  <%= @system_client.domain %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @system_client.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_system_client_path(@system_client) %> |
+<%= link_to 'Back', system_clients_path %>

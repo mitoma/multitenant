@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @system_database.name %>
+</p>
+
+<p>
+  <b>Host:</b>
+  <%= @system_database.hostname %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%= @system_database.port %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%= @system_database.username %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%= @system_database.password %>
+</p>
+
+
+<%= link_to 'Edit', edit_system_database_path(@system_database) %> |
+<%= link_to 'Back', system_databases_path %>
