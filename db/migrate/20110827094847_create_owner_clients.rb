@@ -1,5 +1,5 @@
 class CreateOwnerClients < ActiveRecord::Migration
-  def self.up
+  def change
     create_table :owner_clients do |t|
       t.integer :database_id
       t.text :name
@@ -8,9 +8,5 @@ class CreateOwnerClients < ActiveRecord::Migration
 
       t.timestamps
     end
-  end
-
-  def self.down
-    drop_table :owner_clients
   end
 end
