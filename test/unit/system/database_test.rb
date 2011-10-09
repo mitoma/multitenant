@@ -5,4 +5,10 @@ class System::DatabaseTest < ActiveSupport::TestCase
   test "the truth" do
     assert true
   end
+
+  test "DBcreate and drop" do
+    @system_database = system_databases(:one)
+    @system_database.create_database "testdb"
+    @system_database.drop_database "testdb"
+  end
 end

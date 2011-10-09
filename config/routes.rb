@@ -9,4 +9,6 @@ Multitenant::Application.routes.draw do
     end
     resources :databases
   end
+
+  resources :dummy
 end

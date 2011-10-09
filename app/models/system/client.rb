@@ -36,16 +36,33 @@ class System::Client < ActiveRecord::Base
   end
 
   def proc_client(&block)
+    return unless block_given?
+    db = self.database
+    query_cache_enabled = System::ClientBase.connection.query_cache_enabled
     System::ClientBase.establish_connection({:adapter => 'postgresql',
                                               :encoding => 'unicode',
                                               :database => database_name,
-                                              :hostname => hostname,
-                                              :port => port,
-                                              :username => username,
-                                              :password => password
+                                              :hostname => db.hostname,
+                                              :port => db.port,
+                                              :username => db.username,
+                                              :password => db.password
                                             })
+    sync_query_cache_state(query_cache_enabled)
     yield
   ensure
     System::ClientBase.establish_connection
+    sync_query_cache_state(query_cache_enabled)
   end
+
+  private
+
+  # connection を張りなおすので query_cache の設定を再設定する
+  def sync_query_cache_state(query_cache_enabled)
+    if query_cache_enabled
+      System::ClientBase.connection.enable_query_cache!
+    else
+      System::ClientBase.connection.disable_query_cache!
+    end
+  end
+
 end
